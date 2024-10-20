@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{{asset('css/auth.css')}}" />
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <div class="auth-container">
@@ -22,8 +23,14 @@
           <div class="tab-content" data-tab="login">
             <form action="{{ route('handle.login') }}" method="POST" class="form">
               @csrf
-              <input type="email" placeholder="Enter E-mail" class="input" id="login-email" name="email" required/>
+              <input type="email" placeholder="Enter E-mail" class="input @error('email') input-error @enderror" id="login-email" name="email" required value="{{ old('email') }}"/>
+              @error('email')
+              <div class="error-message">{{ $message }}</div>
+            @enderror
               <input type="password" placeholder="*******" class="input" id="login-password" name="password" required />
+              @error('password')
+              <div class="error-message">{{ $message }}</div>
+            @enderror
               <button type="submit" class="submit-button">Login</button>
             </form>
           </div>

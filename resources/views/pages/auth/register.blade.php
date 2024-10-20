@@ -22,10 +22,23 @@
           <div class="tab-content" data-tab="signup">
             <form  action="{{ route('handle.signin') }}" method="POST" class="form">
               @csrf
-              <input type="text" placeholder="First Name" class="input" id="signup-firstname" name="firstname" required/>
-              <input type="text" placeholder="Last Name" class="input" id="signup-lastname" name="lastname" required/>
-              <input type="email" placeholder="E-mail" class="input" id="signup-email" name="email" required/>
-              <input type="password" placeholder="Password" class="input" id="signup-password" name="password" required/>
+              <input type="text" placeholder="First Name"  class="input @error('firstname') input-error @enderror"  id="signup-firstname" name="firstname" required  value="{{ old('firstname') }}" />
+              @error('firstname')
+              <div class="error-message">{{ $message }}</div>
+              @enderror
+              <input type="text" placeholder="Last Name" class="input @error('lastname') input-error @enderror"  id="signup-lastname" name="lastname" required  value="{{ old('lastname') }}"/>
+              @error('lastname')
+              <div class="error-message">{{ $message }}</div>
+            @enderror
+              <input type="email" placeholder="E-mail"  class="input @error('email') input-error @enderror"  id="signup-email" name="email" required  value="{{ old('email') }}"/>
+              @error('email')
+              <div class="error-message">{{ $message }}</div>
+            @enderror
+              <input type="password" placeholder="Password"  class="input @error('password') input-error @enderror"  id="signup-password" name="password" required/>
+              @error('password')
+              <div class="error-message">{{ $message }}</div>
+            @enderror
+      
               <button type="submit" class="submit-button">Signin</button>
             </form>
           </div>
