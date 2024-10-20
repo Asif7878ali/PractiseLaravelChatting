@@ -25,7 +25,7 @@
 
     <!-- Right side - Log In and Download buttons -->
     <div class="navbar-right">
-      <a>
+      <a href="{{ route('login') }}">
         <button class="login-button">Log In</button>
       </a>
       <button class="download-button">Download</button>
@@ -39,7 +39,7 @@
       <div class="text-section">
         <h1>Let’s Connect <br /> with Your Friend <br /> in Real Time</h1>
 
-        <a href="/auth">
+        <a href="{{ route('login') }}">
           <button class="start-button">Start Chatting Now</button>
         </a>
 
@@ -175,7 +175,7 @@
       <h1>Get better work done</h1>
       <p>See why millions of people across 195 countries use Dash.</p>
       <div class="button-container">
-        <a href="/auth">
+        <a href="{{ route('login') }}">
           <button class="cta-button">Try for free</button>
         </a>
       </div>
@@ -238,7 +238,7 @@
             <!-- Logo Section -->
             <div class="footer-col">
               <img src="./assets/chatwave.png" alt="WhatsApp Logo" class="logo" />
-              <a href="/auth">
+              <a href="{{ route('login') }}">
                 <button class="chat-now-btn">Chat Now</button>
               </a>
             </div>

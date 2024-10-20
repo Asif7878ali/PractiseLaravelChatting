@@ -1,16 +1,30 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 //All UI Routes
-Route::get('/', function() {
+Route::get('/', function () {
     return view('pages.home.welcome');
 });
 
-Route::get('/auth/login', function() {
+Route::get('/logInPage', function () {
     return view('pages.auth.login');
+})->name('login');
+
+Route::get('/signInPage', function () {
+    return view('pages.auth.register');
+})->name('signin');
+
+Route::middleware('auth')->group(function () {
+     Route::get('/chat', function () {
+        return view('pages.chat.chat');
+    });
+    Route::get('/profile', function () {
+        return view('pages.profile.completeProfile');
+    });
 });
 
-Route::get('/auth/signin', function() {
-    return view('pages.auth.register');
-});
+//Auth Route
+Route::post('/auth/login',[AuthController::class, 'login'])->name('handle.login');
+Route::post('/auth/signin',[AuthController::class, 'register'])->name('handle.signin');

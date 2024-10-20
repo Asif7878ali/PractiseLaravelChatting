@@ -20,31 +20,12 @@
         </div>
         <div class="auth-tabs">
           <div class="tab-content" data-tab="signup">
-            <form onsubmit="return handleSignup(event)" class="form">
-              <input
-                type="text"
-                placeholder="First Name"
-                class="input"
-                id="signup-firstname"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                class="input"
-                id="signup-lastname"
-              />
-              <input
-                type="email"
-                placeholder="E-mail"
-                class="input"
-                id="signup-email"
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                class="input"
-                id="signup-password"
-              />
+            <form  action="{{ route('handle.signin') }}" method="POST" class="form">
+              @csrf
+              <input type="text" placeholder="First Name" class="input" id="signup-firstname" name="firstname" required/>
+              <input type="text" placeholder="Last Name" class="input" id="signup-lastname" name="lastname" required/>
+              <input type="email" placeholder="E-mail" class="input" id="signup-email" name="email" required/>
+              <input type="password" placeholder="Password" class="input" id="signup-password" name="password" required/>
               <button type="submit" class="submit-button">Signin</button>
             </form>
           </div>
@@ -57,7 +38,7 @@
         />
       </div>
       <div class="signin">
-        <span>have an acccout? <a href="/auth/login">Login</a></span>
+        <span>have an acccout? <a href="{{ route('login') }}">Login</a></span>
       </div>
     </div>
   </div>
