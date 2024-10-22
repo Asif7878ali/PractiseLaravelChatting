@@ -16,6 +16,10 @@ Route::get('/signInPage', function () {
     return view('pages.auth.register');
 })->name('signin');
 
+Route::get('/admin', function () {
+    return view('pages.admin.loginAdmin');
+});
+
 Route::middleware('auth')->group(function () {
      Route::get('/chat', function () {
         return view('pages.chat.chat');
