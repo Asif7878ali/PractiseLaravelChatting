@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -16,19 +18,27 @@ class AuthController extends Controller
          'email' => 'required|email|unique:users,email',
          'password' => 'required|min:4',
      ]);
-     dd($request->all());
+
      return redirect()->route('login')->with('success', 'Account created successfully!');
      }
  
      // Handle User Login
-     public function login(Request $request){
-         //validation
-         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-        dd($request->all());
-     }
+     public function login(Request $request) {
+      // Validation
+      $credentials = $request->validate([
+          'email' => 'required|email',
+          'password' => 'required',
+      ]);
+      // $loginStatus = Auth::attempt($credentials);
+      // dd($loginStatus);
+      if (Auth::attempt($credentials)) {
+          $request->session()->regenerate();
+          return redirect()->route('chatpage');
+      } else {
+          // This should not be reached if the credentials are valid
+          dd('User not found or invalid credentials');
+      }
+  }
  
      // Handle User Logout
      public function logout(Request $request){
