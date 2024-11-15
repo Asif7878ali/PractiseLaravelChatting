@@ -1,301 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatwave</title>
-  <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
-</head>
-<body>
-    {{-- Navigation Bar --}}
-  <nav class="navbar">
-    <!-- Left side - Logo and links -->
-    <div class="navbar-left">
-      <div class="logo-container">
-        <img src="{{ asset('assets/chatwave.png') }}" alt="WhatsApp Logo" class="logo" />
-      </div>
+<x-layout>
+    <!-- Navbar -->
+    <x-navbar/>
+    {{-- Section One --}}
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {{-- {/* Left Side: Text Section */} --}}
+        <div class="space-y-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-3">
+            Let’s Connect <br /> with Your Friend <br /> in Real Time
+          </h1>
 
-      <div class="navbar-links">
-        <a >Features</a>
-        <a >Privacy</a>
-        <a >Help Center</a>
-        <a >Apps</a>
-      </div>
-    </div>
+          <a to="/auth">
+            <button class="bg-[#25d366] text-white font-medium py-3 px-6 rounded-full hover:bg-[#20b85c] transition">
+              Start Chatting Now
+            </button>
+          </a>
 
-    <!-- Right side - Log In and Download buttons -->
-    <div class="navbar-right">
-      <a href="{{ route('login') }}">
-        <button class="login-button">Log In</button>
-      </a>
-      <button class="download-button">Download</button>
-    </div>
-  </nav>
-
-  {{-- Section one --}}
-  <section class="section-one">
-    <div class="container">
-      <!-- Left Side: Text Section -->
-      <div class="text-section">
-        <h1>Let’s Connect <br /> with Your Friend <br /> in Real Time</h1>
-
-        <a href="{{ route('login') }}">
-          <button class="start-button">Start Chatting Now</button>
-        </a>
-
-        <!-- Stats Section -->
-        <div class="stats-section">
-          <div class="users">
-            <img
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-              alt="User"
-              class="user-image"
-            />
-            <img
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="User"
-              class="user-image overlap"
-            />
-            <p class="stats-text">
-              20+ <br />
-              <span>Happy Customers</span>
-            </p>
-          </div>
-
-          <div class="rating">
-            2.5/5 <br />
-            <span>Rating</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Side: Image Section -->
-      <div class="image-section">
-        <img
-          src="https://img.freepik.com/free-vector/conversation-concept-illustration_114360-1305.jpg?w=740&t=st=1724871547~exp=1724872147~hmac=d39930e9f3c3337fb5876fd3ec18e8091f4e8b65c2e2c0fc6ac3b3defe6ec792"
-          alt="Person with phone"
-          class="main-image"
-        />
-
-        <!-- Chat Bubbles -->
-        <div class="chat-bubble chat-left">
-          <p class="chat-name">Rihana</p>
-          <p class="chat-text">Hii</p>
-        </div>
-
-        <div class="chat-bubble chat-right">
-          <p class="chat-name">Random Khan</p>
-          <p class="chat-text">Bye</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-   {{-- section two --}}
-   <section class="section-two">
-    <div class="container">
-      <h2>Features For a Better Experience</h2>
-      <div class="features-grid">
-        <!-- Feature 1 -->
-        <div class="feature-card">
-          <div class="icon-container">
-            <i class="fas fa-play icon"></i>
-          </div>
-          <h3>Messaging</h3>
-          <p>
-            This software is very easy for you to manage. You can use it as you
-            wish.
-          </p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="feature-card">
-          <div class="icon-container">
-            <i class="fas fa-clock icon"></i>
-          </div>
-          <h3>Save Your Time</h3>
-          <p>
-            This software is very easy for you to manage. You can use it as you
-            wish.
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="feature-card">
-          <div class="icon-container">
-            <i class="fas fa-user-shield icon"></i>
-          </div>
-          <h3>Keep Safe & Private</h3>
-          <p>
-            This software is very easy for you to manage. You can use it as you
-            wish.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {{-- Section Three --}}
-  <div class="section-three">
-    <div class="content-container">
-      <!-- Left Section with User Images and Messages -->
-      <div class="left-section">
-        <div class="user">
-          <img
-            src="https://images.unsplash.com/photo-1522125670776-3c7abb882bc2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
-            alt="User 1"
-            class="user-image"
-          />
-          <div class="message">Hello, I need some help</div>
-        </div>
-
-        <div class="user">
-          <img
-            src="https://plus.unsplash.com/premium_photo-1721955487786-76802cbf0812?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3"
-            alt="User 2"
-            class="user-image"
-          />
-          <div class="message">Hey, how can I help you?</div>
-        </div>
-      </div>
-
-      <!-- Right Section with Text Content -->
-      <div class="right-section">
-        <h1>Your friends come to your phone.</h1>
-        <p>
-          The term chatting or chitchat refers to communication between two or
-          more parties that can occur in person or over the internet via SMS or
-          multimedia messaging.
-        </p>
-      </div>
-    </div>
-
-    <!-- Bottom Section with Call to Action -->
-    <div class="cta-container">
-      <h1>Get better work done</h1>
-      <p>See why millions of people across 195 countries use Dash.</p>
-      <div class="button-container">
-        <a href="{{ route('login') }}">
-          <button class="cta-button">Try for free</button>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  {{-- section 4 --}}
-  <div class="section-four">
-    <div class="content-container">
-      <!-- Left Section (Text Content) -->
-      <div class="text-content">
-        <h3>Why ChatWave?</h3>
-        <h1>Our mission is user convenience</h1>
-        <p>
-          ChatWave makes your communication with relatives, work friends, and
-          family more fun. Stay connected with them with plentiful features.
-        </p>
-      </div>
-
-      <!-- Right Section (Stats) -->
-      <div class="stats-grid">
-        <div class="stat-item">
-          <i class="fa fa-comments"></i>
-          <div>
-            <h2>20+</h2>
-            <p>Message Sent</p>
-          </div>
-        </div>
-
-        <div class="stat-item">
-          <i class="fa fa-users"></i>
-          <div>
-            <h2>5+</h2>
-            <p>Active User</p>
-          </div>
-        </div>
-
-        <div class="stat-item">
-          <i class="fa fa-globe"></i>
-          <div>
-            <h2>1+</h2>
-            <p>Available Countries</p>
-          </div>
-        </div>
-
-        <div class="stat-item">
-          <i class="fa fa-bolt"></i>
-          <div>
-            <h2>0x</h2>
-            <p>Send & Upload Speed</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      {{-- Footer --}}
-      <div class="footer">
-        <div class="footer-container">
-          <div class="footer-grid">
-            <!-- Logo Section -->
-            <div class="footer-col">
-              <img src="./assets/chatwave.png" alt="WhatsApp Logo" class="logo" />
-              <a href="{{ route('login') }}">
-                <button class="chat-now-btn">Chat Now</button>
-              </a>
-            </div>
-    
-            <!-- Who We Are Section -->
-            <div class="footer-col">
-              <h4>Who we are</h4>
-              <ul>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Brand Center</a></li>
-                <li><a href="#">Privacy</a></li>
-              </ul>
-            </div>
-    
-            <!-- Use WhatsApp Section -->
-            <div class="footer-col">
-              <h4>Use WhatsApp</h4>
-              <ul>
-                <li><a href="#">Android</a></li>
-                <li><a href="#">iPhone</a></li>
-                <li><a href="#">Mac/PC</a></li>
-                <li><a href="#">WhatsApp Web</a></li>
-              </ul>
-            </div>
-    
-            <!-- Help Section -->
-            <div class="footer-col">
-              <h4>Need help?</h4>
-              <ul>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Apps</a></li>
-                <li><a href="#">Security Advisories</a></li>
-              </ul>
-            </div>
-          </div>
-    
-          <div class="footer-divider"></div>
-    
-          <div class="footer-bottom">
-            <div class="footer-text">
-              <p>2024 © Chatwave LLC</p>
-              <p>
-                <a href="#">Terms & Privacy Policy</a> | <a href="#">Sitemap</a>
+          {{-- {/* Stats Section */} --}}
+          <div class="flex items-center space-x-8">
+            <div class="flex items-center space-x-2">
+              <img
+                src={{asset('assets/Menjpg.jpg')}}
+                alt="User"
+                class="h-10 w-10 rounded-full border-2 border-white shadow-md"
+              />
+              <img
+                src={{asset('assets/Women.avif')}}
+                alt="User"
+                class="h-10 w-10 rounded-full border-2 border-white shadow-md -ml-4"
+              />
+              <p class="text-lg font-semibold text-gray-900">
+                20+ <br />
+                <span class="text-sm text-gray-500">Happy Customers</span>
               </p>
             </div>
-    
-            <div class="social-icons">
-              <i class="fa-brands fa-square-x-twitter"></i>
-              <i class="fa-brands fa-youtube"></i>
-              <i class="fa-brands fa-instagram"></i>
-              <i class="fa-brands fa-facebook-f"></i>
+
+            <div class="text-lg font-semibold text-gray-900">
+              2.5/5 <br />
+              <span class="text-sm text-gray-500">Rating</span>
+            </div>
+          </div>
+        </div>
+
+        {{-- {/* Right Side: Image Section */} --}}
+        <div class="relative">
+          {{-- {/* Main Image */} --}}
+          <img
+            src={{asset('assets/MainImage.avif')}}
+            alt="Person with phone"
+            class="w-full lg:w-3/4 mx-auto"
+          />
+
+          {{-- {/* Chat Bubbles */} --}}
+          <div class="absolute top-10 left-0 w-48 p-4 bg-white rounded-xl shadow-lg">
+            <p class="text-sm font-semibold text-gray-800">Rihana</p>
+            <p class="text-sm text-gray-600">Hii</p>
+          </div>
+
+          <div class="absolute bottom-10 right-0 w-48 p-4 bg-white rounded-xl shadow-lg">
+            <p class="text-sm font-semibold text-gray-800">Random Khan</p>
+            <p class="text-sm text-gray-600">Bye</p>
+          </div>
+        </div>
+      </div>
+    </section>
+        {{-- Section Two --}}
+        <section class="bg-white py-16">
+          <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">
+              Features For a Better Experience
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="bg-gray-100 rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Messaging</h3>
+                <p class="text-gray-600">
+                  This software is very easy for you to manage. You can use it as
+                  you wish.
+                </p>
+              </div>
+              <div class="bg-gray-100 rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Save Your Time</h3>
+                <p class="text-gray-600">
+                  This software is very easy for you to manage. You can use it as
+                  you wish.
+                </p>
+              </div>
+              <div class="bg-gray-100 rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Keep Safe & Private</h3>
+                <p class="text-gray-600">
+                  This software is very easy for you to manage. You can use it as
+                  you wish.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+    {{-- Section Three --}}
+    <div class="flex flex-col items-center justify-center min-h-screen bg-white">
+      <div class="flex flex-col md:flex-row items-center max-w-4xl w-full mx-auto px-4">
+        {{-- {/* Left section with images and messages */} --}}
+        <div class="flex flex-col items-center md:items-start space-y-6">
+          {{-- {/* First user */} --}}
+          <div class="relative">
+            <img
+              src={{asset('assets/Menjpg.jpg')}}
+              alt="User 1"
+              class="w-24 h-24 rounded-full object-cover"
+            />
+
+            <div class="bg-white shadow-md p-3 rounded-lg mt-2 text-black">
+              Hello, I need some help
+            </div>
+          </div>
+
+          {{-- {/* Second user */} --}}
+          <div class="relative">
+            <img
+              src={{asset('assets/Women.avif')}}
+              alt="User 2"
+              class="w-24 h-24 rounded-full object-cover"
+            />
+
+            <div class="bg-white shadow-md p-3 rounded-lg mt-2 text-black">
+              Hey, how can I help you?
+            </div>
+          </div>
+        </div>
+
+        {{-- {/* Right section with text */} --}}
+        <div class="text-center md:text-left mt-6 md:mt-0 md:ml-12">
+          <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            Your friends come to your phone.
+          </h1>
+          <p class="text-gray-500 max-w-md">
+            term chatting or chitchat refers in general to communication between
+            two or more parties that can occur in person, in today's modern age,
+            it can also occur over the internet via Short Message Service (SMS)
+            text message and Multimedia Messaging Service
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center max-w-md w-full mt-10">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">
+          Get better work done
+        </h1>
+
+        <p class="text-gray-500 mb-6">
+          See why millions of people across 195 countries use Dash.
+        </p>
+
+        <div class="flex items-center justify-center space-x-2">
+            <a to='/auth'>
+            <button class="bg-[#25d366] hover:bg-[#20b85c] text-white font-semibold py-3 px-6 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Try for free
+          </button>
+            </a>
+         
+        </div>
+      </div>
+    </div>
+    {{-- Section Four --}}
+    <div class="flex items-center justify-center  bg-white">
+      <div class="flex flex-col md:flex-row max-w-6xl w-full px-6 py-12 space-y-8 md:space-y-0 md:space-x-12">
+        {{-- {/* Left Section (Text) */} --}}
+        <div class="md:w-1/2">
+          <h3 class="text-gray-500 text-sm font-semibold mb-2">Why ChatWave?</h3>
+          <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            Our mission is user convenience
+          </h1>
+          <p class="text-gray-600">
+            Chatwave makes your communication with relatives, work friends, and family more fun. Stay connected with them with plentiful features.
+          </p>
+        </div>
+  
+        {{-- {/* Right Section (Stats) */} --}}
+        <div class="md:w-1/2 grid grid-cols-2 gap-6">
+          {{-- {/* Stats Item 1 */} --}}
+          <div class="flex items-center space-x-3">
+            <FaComments class="text-2xl text-gray-600" />
+            <div>
+              <h2 class="text-3xl font-bold">20+</h2>
+              <p class="text-gray-500">Message Sent</p>
+            </div>
+          </div>
+  
+          {{-- {/* Stats Item 2 */} --}}
+          <div class="flex items-center space-x-3">
+            <FaUsers class="text-2xl text-gray-600" />
+            <div>
+              <h2 class="text-3xl font-bold">50</h2>
+              <p class="text-gray-500">Active User</p>
+            </div>
+          </div>
+  
+          {{-- {/* Stats Item 3 */} --}}
+          <div class="flex items-center space-x-3">
+            <FaGlobe class="text-2xl text-gray-600" />
+            <div>
+              <h2 class="text-3xl font-bold">1+</h2>
+              <p class="text-gray-500">Available countries</p>
+            </div>
+          </div>
+  
+          {{-- {/* Stats Item 4 */} --}}
+          <div class="flex items-center space-x-3">
+            <FaBolt class="text-2xl text-gray-600" />
+            <div>
+              <h2 class="text-3xl font-bold">0x</h2>
+              <p class="text-gray-500">Send & Upload Speed</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-</body>
-</html>
+<!-- Footer -->
+<x-footer/>
+</x-layout>

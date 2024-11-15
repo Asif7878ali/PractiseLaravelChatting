@@ -1,51 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auth Page</title>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="{{asset('css/auth.css')}}" />
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>
+<x-layout>
+    <section class="min-h-screen flex box-border justify-center items-center">
+        <div class="bg-gray-100 rounded-2xl flex max-w-3xl p-5 items-center">
+            <div class="md:w-1/2 px-8">
+                <h2 class="font-bold text-3xl text-[#25d366]">Login</h2>
+                <p class="text-sm mt-4">If you already a member, easily log in now.</p>
 
-  <div class="auth-container">
-    <div class="auth-card">
-      <div class="auth-content">
-        <div class="auth-header">
-          <h1>Welcome</h1>
-          <p>Fill the details to get started with ChatWave</p>
+                <form action="" class="flex flex-col gap-4">
+                    <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email">
+                    <div class="relative">
+                        <input class="p-2 rounded-xl border w-full" type="password" name="password" id="password"
+                            placeholder="Password">
+                    </div>
+                    <button
+                        class="bg-[#25d366] hover:bg-[#20b85c] text-white py-2 rounded-xl hover:scale-105 duration-300 font-medium"
+                        type="submit">Login</button>
+                </form>
+                <div class="mt-6 items-center">
+                    <hr class="border-gray-300">
+                    <p class="text-center text-sm">OR</p>
+                    <hr class="border-gray-300">
+                </div>
+                <button
+                    class="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 font-medium hover:bg-green-200">
+                    <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="25px">
+                        <path fill="#FFC107"
+                            d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z">
+                        </path>
+                        <path fill="#FF3D00"
+                            d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z">
+                        </path>
+                        <path fill="#4CAF50"
+                            d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z">
+                        </path>
+                        <path fill="#1976D2"
+                            d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z">
+                        </path>
+                    </svg>
+                    Login with Google
+                </button>
+                <a href="">
+                    <button type="submit" class="mt-10 text-sm border-b border-gray-500 py-5 playfair tooltip">Forget
+                        password?</button>
+                </a>
+
+
+                <div class="mt-4 text-sm flex justify-between items-center container-mr">
+                    <p class="mr-3 md:mr-0 ">If you don't have an account..</p>
+                    <a href={{route('signin.page')}}
+                        class="hover:border register text-white bg-[#25d366] hover:bg-[#20b85c] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 ] font-semibold duration-300">Register</a>
+                </div>
+            </div>
+            <div class="md:block hidden w-1/2">
+                <img class="rounded-2xl max-h-[1600px]" src={{ asset('assets/MainImage.avif') }} alt="login form image">
+            </div>
         </div>
-        <div class="auth-tabs">
-          <div class="tab-content" data-tab="login">
-            <form action="{{ route('handle.login') }}" method="POST" class="form">
-              @csrf
-              <input type="email" placeholder="Enter E-mail" class="input @error('email') input-error @enderror" id="login-email" name="email" required value="{{ old('email') }}"/>
-              @error('email')
-              <div class="error-message">{{ $message }}</div>
-            @enderror
-              <input type="password" placeholder="*******" class="input" id="login-password" name="password" required />
-              @error('password')
-              <div class="error-message">{{ $message }}</div>
-            @enderror
-              <button type="submit" class="submit-button">Login</button>
-            </form>
-          </div>
-         
-        </div>
-      </div>
-      <div class="auth-image">
-        <img
-          src="https://img.freepik.com/free-vector/conversation-concept-illustration_114360-1305.jpg?w=740&t=st=1724871547~exp=1724872147~hmac=d39930e9f3c3337fb5876fd3ec18e8091f4e8b65c2e2c0fc6ac3b3defe6ec792"
-          alt="Chat illustration"
-        />
-      </div>
-      <div class="signin">
-        <span>Do not have an acccout? <a href="{{ route('signin') }}">Signin</a></span>
-      </div>
-    </div>
-  </div>
-</html>
+    </section>
+</x-layout>
