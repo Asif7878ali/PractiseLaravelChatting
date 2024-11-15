@@ -1,19 +1,51 @@
 <x-layout>
+    <!-- Toast -->
+    @if (session('error'))
+    <div class="fixed top-10 right-10 max-w-xs bg-red-200 border border-gray-200 rounded-xl shadow-lg" role="alert" tabindex="-1" aria-labelledby="hs-toast-error-example-label" id="alert">
+        <div class="flex p-4">
+            <div class="shrink-0">
+                <p>Error!</p>
+            </div>
+            <div class="ml-3">
+                <p id="hs-toast-error-example-label" class="text-sm text-gray-700">
+                    {{ session()->get('error') }}
+                </p>
+            </div>
+            <button  onclick="document.getElementById('alert').style.display='none'" >
+                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+            </button>
+           
+        </div>
+    </div>            
+    @endif
+
     <section class="min-h-screen flex box-border justify-center items-center">
         <div class="bg-gray-100 rounded-2xl flex max-w-3xl p-5 items-center">
             <div class="md:w-1/2 px-8">
                 <h2 class="font-bold text-3xl text-[#25d366]">Login</h2>
                 <p class="text-sm mt-4">If you already a member, easily log in now.</p>
 
-                <form action="" class="flex flex-col gap-4">
-                    <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email">
+                <form action={{route('login')}} method="POST" class="flex flex-col gap-4">
+                    @csrf
+                    <div class="relative mt-8">
+                        <input class="p-2 rounded-xl border w-full" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                        @error('email')
+                        <div class="text-sm text-red-500" role="alert">
+                            {{ $message }}
+                        </div>
+                       @enderror
+                    </div>
+                   
                     <div class="relative">
                         <input class="p-2 rounded-xl border w-full" type="password" name="password" id="password"
-                            placeholder="Password">
+                            placeholder="Password" value="{{ old('password') }}" required autocomplete="">
+                         @error('password')
+                            <div class="text-sm text-red-500" role="alert">
+                                {{ $message }}
+                            </div>
+                           @enderror
                     </div>
-                    <button
-                        class="bg-[#25d366] hover:bg-[#20b85c] text-white py-2 rounded-xl hover:scale-105 duration-300 font-medium"
-                        type="submit">Login</button>
+                    <button class="bg-[#25d366] hover:bg-[#20b85c] text-white py-2 rounded-xl hover:scale-105 duration-300 font-medium" type="submit">Login</button>
                 </form>
                 <div class="mt-6 items-center">
                     <hr class="border-gray-300">
@@ -46,13 +78,13 @@
 
                 <div class="mt-4 text-sm flex justify-between items-center container-mr">
                     <p class="mr-3 md:mr-0 ">If you don't have an account..</p>
-                    <a href={{route('signin.page')}}
+                    <a href={{route('user.create')}}
                         class="hover:border register text-white bg-[#25d366] hover:bg-[#20b85c] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 ] font-semibold duration-300">Register</a>
                 </div>
             </div>
             <div class="md:block hidden w-1/2">
                 <img class="rounded-2xl max-h-[1600px]" src={{ asset('assets/MainImage.avif') }} alt="login form image">
-            </div>
+            </div>         
         </div>
     </section>
 </x-layout>
