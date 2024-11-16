@@ -1,4 +1,22 @@
 <x-layout>
+  {{-- Toast --}}
+  @if (session('warning'))
+  <div class="fixed top-10 right-10 max-w-xs bg-yellow-200 border border-gray-200 rounded-xl shadow-lg" role="alert" tabindex="-1" aria-labelledby="hs-toast-error-example-label" id="alert">
+    <div class="flex p-4">
+        
+        <div class="ml-3">
+            <strong id="hs-toast-error-example-label" class="text-sm text-gray-700">
+                {{ session()->get('warning') }}
+            </strong>
+        </div>
+        <button  onclick="document.getElementById('alert').style.display='none'" >
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+        </button>
+       
+    </div>
+</div>         
+  @endif
+ 
     <div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
         <aside class="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
           <div class="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
@@ -9,9 +27,12 @@
             <span class="flex items-center px-3 py-2.5 font-semibold text-indigo-900 hover:border hover:rounded-full">
               Account Settings
             </span>
-             <span class="flex items-center px-3 py-2.5 font-semibold text-indigo-900 hover:border hover:rounded-full">
-               Logout
-              </span>  
+            <button type="button" onclick="toggleModal('logout')" class="flex items-center px-3 py-2.5 font-semibold text-indigo-900 hover:border hover:rounded-full">
+              Logout
+          </button>
+          
+                <!-- Modal -->
+                <x-logout/>
             <span class="flex items-center px-3 py-2.5 font-semibold text-red-600 hover:border hover:rounded-full">
               Delete Account
             </span>

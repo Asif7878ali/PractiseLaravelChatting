@@ -10,6 +10,9 @@ class AuthController extends Controller
     public function loginPage(){
         return view('pages.auth.login');
     } 
+    public function profileSetup(){
+        return view('pages.auth.profilesetup');
+    } 
 
    
     public function login(Request $request){
@@ -18,13 +21,20 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        // dd($credentials);
+        
+         // Attempt to log in the user
         if(!Auth::attempt($credentials)){
             session()->flash('error', 'Sorry Credentials doen not Match'); 
             return to_route('login.page');
         }
-        dd('Ok');
 
+        // Check if the user's profile setup is complete
+        $user = Auth::user();
+        if(! $user->profile_setup){
+            session()->flash('warning', 'Complete Profile Setup to Chat'); 
+            return to_route('profile.setup');
+        }
+         dd('Chat app');
     }
 
     public function logout(Request $request){
