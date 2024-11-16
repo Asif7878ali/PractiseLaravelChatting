@@ -32,7 +32,8 @@ class AuthController extends Controller
         $user = Auth::user();
         if(! $user->profile_setup){
             session()->flash('warning', 'Complete Profile Setup to Chat'); 
-            return to_route('profile.setup');
+            // dd($user);
+            return view('pages.auth.profilesetup', compact('user'));
         }
          return to_route('chat.page');
     }
