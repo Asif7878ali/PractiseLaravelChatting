@@ -34,7 +34,7 @@ class AuthController extends Controller
             session()->flash('warning', 'Complete Profile Setup to Chat'); 
             return to_route('profile.setup');
         }
-         dd('Chat app');
+         return to_route('chat.page');
     }
 
     public function logout(Request $request){
